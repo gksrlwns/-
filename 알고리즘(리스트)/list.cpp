@@ -39,13 +39,14 @@ int main()
 
 	CircleList list;
 	HeadNode* CL;
+	
 	CL = list.createList();
 	list.insertFirstNode(CL,100);
 	list.insertFirstNode(CL, 200);
 	list.insertFirstNode(CL, 300);
 	list.insertFirstNode(CL, 400);
-	list.insertFirstNode(CL, 500);
-	list.insertFirstNode(CL, 600);
-	list.insertFirstNode(CL, 100);
+	Node* p = list.searchNode(CL, 300);
+	list.deleteNode(CL, p);
+	list.examplePrint(CL);
 	list.printList(CL);
 }

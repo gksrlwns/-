@@ -40,65 +40,88 @@ public:
 			CL->head = NewNode;
 		}
 	}
-	void printList(HeadNode* L)
+
+	Node* searchNode(HeadNode* L, int x)
 	{
-		Node* p;
-		cout << "CL =[";
-		p = L->head;
-		if (p == NULL)
+		Node* p = L->head;
+		while (p != NULL)
 		{
-			cout << "]";
+			if (p->data == x)
+			{
+				cout << x << "를 찾았습니다" << endl;
+				return p;
+			}
+			else
+			{
+				p = p->link;
+			}
+		}
+		if (p == NULL)
+			cout << "찾는 정보가 없습니다." << endl;
+		return p;
+	}
+
+	void deleteNode(HeadNode* L, Node* p)
+	{
+		Node* pre;
+		if (L->head == NULL)
+			return;
+		if (L->head->link == NULL)
+		{
+			delete (L->head);
+			L->head = NULL;
 			return;
 		}
-		do
+		else if (p == NULL)
+			return;
+		else
 		{
-			cout << p->data;
-			p = p->link;
-			if (p != L->head) cout << ", ";
-		} while (p != L->head);
-		{
-			cout << "]";
+			pre = L->head;
+			while (pre->link != p)
+			{
+				pre = pre->link;
+			}
+			pre->link = p->link;
+			delete p;
 		}
-		
+
 	}
-	void printList(HeadNode* L) {
+
+	//비교
+	void printList(HeadNode* L) { 
 		//노드 순서대로 리스트 출력
 		Node* p;
-		Node* tmp;
-
 		p = L->head;
-
-		/*if (p == NULL) {
+		if (p == NULL) {
 			cout << "연결 리스트가 비어있습니다." << endl;
 			return;
-		}*/
-			cout << "CL = ( "; // 리스트가 안 빈 경우
-			tmp = L->head;
-			cout << p->data;
-			p = p->link;
+		}
+		cout << "CL = ( "; // 리스트가 안 빈 경우
+		cout << p->data;
+		p = p->link;
 
-			while (p != L->head) {  // 헤드가 가리키는 걸 p가 가리키게 되면 출력을 멈춘다.
+		while (p != L->head) // 헤드가 가리키는 걸 p가 가리키게 되면 출력을 멈춘다.
+		{  
 				cout << ", ";
 				cout << p->data;
 				p = p->link;
-			}
+		}
 		cout << " )" << endl << endl;
 	}
-	/*void printList(HeadNode* CL)
+	void examplePrint(HeadNode *L)
 	{
-		Node* p;
-		p = CL->head;
-		cout << "CL =[";
-		while (p != CL->head)
-		{
+		Node* p = L->head;
+		if (p == NULL) {
+			cout << "연결 리스트가 비어있습니다." << endl;
+			return;
+		}
+		cout << "example CL = (";
+		do {
 			cout << p->data;
 			p = p->link;
-			if (p != CL->head)
-			{
-				cout << ", ";
-			}
-
-		}
-		cout << "]";
-	}*/
+			if (p != L->head) cout << ", ";
+			
+		} while (p != L->head);
+		cout << ")" << endl;
+	}
 };

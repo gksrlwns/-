@@ -48,5 +48,5 @@ int main()
 	Node* p = list.searchNode(CL, 300);
 	list.deleteNode(CL, p);
 	list.examplePrint(CL);
-	list.printList(CL);
+	
 }

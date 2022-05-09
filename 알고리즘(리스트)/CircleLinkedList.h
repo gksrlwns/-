@@ -82,6 +82,7 @@ public:
 				pre = pre->link;
 			}
 			pre->link = p->link;
+			if (p == L->head) L->head = p->link;
 			delete p;
 		}
 

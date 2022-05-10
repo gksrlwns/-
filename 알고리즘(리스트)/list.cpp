@@ -48,5 +48,13 @@ int main()
 	Node* p = list.searchNode(CL, 300);
 	list.deleteNode(CL, p);
 	list.examplePrint(CL);
+	Node* q = list.searchNode(CL, 400);
+	list.insertMiddleNode(CL, q, 100);
+	list.examplePrint(CL);
+	Node* x = list.searchNode(CL, 100);
+	list.insertMiddleNode(CL, x, 700);
+	list.examplePrint(CL);
+	list.deleteDataNode(CL, 200);
+	list.examplePrint(CL);
 	
 }

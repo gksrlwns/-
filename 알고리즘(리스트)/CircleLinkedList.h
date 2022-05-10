@@ -18,7 +18,7 @@ public:
 		CL->head = NULL;
 		return CL;
 	}
-	
+	//처음에 추가
 	void insertFirstNode(HeadNode* CL, int x)
 	{
 		Node* NewNode = new Node;
@@ -41,6 +41,24 @@ public:
 		}
 	}
 
+	//특정 노드 뒤에 추가
+	void insertMiddleNode(HeadNode* L, Node* p, int x)
+	{
+		Node* NewNode = new Node;
+		NewNode->data = x;
+		if (L->head == NULL)
+		{
+			L->head = NewNode;
+			NewNode->link = NewNode;
+		}
+		else
+		{
+			NewNode->link = p->link;
+			p->link = NewNode;
+		}
+
+	}
+
 	Node* searchNode(HeadNode* L, int x)
 	{
 		Node* p = L->head;
@@ -60,7 +78,7 @@ public:
 			cout << "찾는 정보가 없습니다." << endl;
 		return p;
 	}
-
+	//특정 노드 삭제
 	void deleteNode(HeadNode* L, Node* p)
 	{
 		Node* pre;
@@ -86,6 +104,27 @@ public:
 			delete p;
 		}
 
+	}
+	//주어진 데이터를 가진 노드 삭제
+	void deleteDataNode(HeadNode* L, int x)
+	{
+		Node* preNode, * delNode;
+		preNode = L->head;
+		while (preNode->link->data != x)preNode = preNode->link;
+		if (L->head == NULL) return;
+		else
+		{
+			delNode = preNode->link;
+			if (delNode == preNode) L->head = NULL;
+			else
+			{
+				preNode->link = delNode->link;
+				if (delNode == L->head) L->head = delNode->link;
+			}
+			delete delNode;
+		}
+		cout << x << "의 데이터값을 가진 노드가 삭제되었습니다." << endl;
+		return;
 	}
 
 	//비교
